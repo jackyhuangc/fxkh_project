@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>四川省防汛抗旱指挥系统-应用支撑平台</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="../../../static/favicon.ico" rel="icon" />
+	<link href="../../../static/Content/css/style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+		.lefttop {
+			width: 187px;
+		}
+
+		.logo,
+		.logo:visited,
+		.logo:focus,
+		.logo:hover {
+			color: #ffffff;
+		}
+
+		.logo {
+			margin-left: 10px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 22px;
+			font-family: 'Microsoft YaHei';
+		}
+
+		body {
+			background: url(../../../static/Content/images/topbg.gif) repeat-x;
+			min-width: 1366px;
+			min-height: 600px;
+			overflow-y: hidden;
+		}
+	</style>
+	<script language="JavaScript" src="../../../static/Content/js/jquery.js"></script>
+	<script src="../../../static/global.config.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			// 顶部导航切换
+			$(".nav li a").click(function () {
+
+				$(".nav li a.selected").removeClass("selected")
+				$(this).addClass("selected");
+
+				if ($(this).text() == "首页") {
+					// $("#leftside").hide();
+					// $("#rightside").css('margin-left', '0px');
+					// 用路由处理
+				}
+				else {
+
+					// 用路由处理
+				}
+			});
+
+			// 动态调整高度
+			$(document).ready(function () {
+
+				$("#leftside").height($(window).height() - 50);
+				$("#rightside").height($(window).height() - 50);
+			});
+
+			// 改变窗体大小时
+			$(window).resize(function () {
+				$("#leftside").height($(window).height() - 50);
+				$("#rightside").height($(window).height() - 50);
+			});
+
+			// 导航切换
+			$(".menuson li").click(function () {
+				$(".menuson li.active").removeClass("active")
+				$(this).addClass("active");
+			});
+
+			// 菜单折叠收缩
+			$('.title').click(function () {
+				var $ul = $(this).next('ul');
+				$('dd').find('ul').slideUp();
+				if ($ul.is(':visible')) {
+					$(this).next('ul').slideUp();
+				} else {
+					$(this).next('ul').slideDown();
+				}
+			});
+		})
+	</script>
+</head>
+
+<body>
+	<div id="app">
+		<!--	
+		<div style="height:50px;">
+			<div class="topleft">
+				<a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/zhxx_logo.png" height="50" width="50" title="系统首页" style="float: left;" />应用支撑平台</a>
+			</div>
+
+			<ul class="nav">
+				<li><a id="navmap" href="./sso/demo.html" target="rightFrame" class="selected" style="width:90px;"><img src="../../../static/Content/images/icons/1_06.png" title="首页" /><h2>首页</h2></a></li>
+			</ul>
+
+			<div class="topright">
+				<div class="user">
+					<span>xxx</span>
+					<a href="#"><i>修改密码</i></a>|
+					<a href="/Support/Home/Logout"><i>退出</i></a>
+				</div>
+			</div>
+		</div>
+		<div id="leftside" style="height:0px;background:#f0f9fd;float:left;">
+
+			<div class="lefttop"><span></span>系统菜单</div>
+
+			<dl class="leftmenu">
+				<dd>
+					<div class="title">
+						<span><img src="../../../static/Content/images/leftico03.png" /></span>数据资源目录
+					</div>
+					<ul class="menuson">
+						<li><cite></cite><a href="/pages/emergency/index.html" target="rightFrame">防汛预案</a><i></i></li>
+						<li><cite></cite><a href="/pages/rsproject/index.html" target="rightFrame">水库工程</a><i></i></li>
+						<li><cite></cite><a href="/pages/social-economy/index.html" target="rightFrame">社会经济</a><i></i></li>
+						<li><cite></cite><a href="/" target="rightFrame">专题图层</a><i></i></li>
+					</ul>
+				</dd>
+				<dd>
+					<div class="title">
+						<span><img src="../../../static/Content/images/leftico03.png" /></span>平台资源监控
+					</div>
+					<ul class="menuson">
+						<li><cite></cite><a href="http://www.baidu.com" target="rightFrame">系统监控</a><i></i></li>
+						<li><cite></cite><a href="/pages/index/index.html" target="rightFrame">数据库监控</a><i></i></li>
+					</ul>
+				</dd>
+				<dd>
+					<div class="title">
+						<span><img src="../../../static/Content/images/leftico03.png" /></span>用户管理中心
+					</div>
+					<ul class="menuson">
+						<li><cite></cite><a href="http://www.baidu.com" target="rightFrame">用户信息维护</a><i></i></li>
+						<li><cite></cite><a href="/pages/index/index.html" target="rightFrame">用户操作日志</a><i></i></li>
+					</ul>
+				</dd>
+				<dd>
+					<div class="title">
+						<span><img src="../../../static/Content/images/leftico03.png" /></span>二期系统链接
+					</div>
+					<ul class="menuson">
+						<li><cite></cite><a href="javascript:alert('稍后完善');" target="_blank">数据汇集平台</a><i></i></li>
+						<li><cite></cite><a href="javascript:alert('稍后完善');" target="rightFrame">洪灾评估系统</a><i></i></li>
+						<li><cite></cite><a href="javascript:alert('稍后完善');" target="rightFrame">抗旱业务系统</a><i></i></li>
+						<li><cite></cite><a href="javascript:alert('稍后完善');" target="rightFrame">综合信息服务系统</a><i></i></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+		<div id="rightside" style="margin-left:187px;">
+			<iframe id="rightFrame" name="rightFrame" src="/" frameborder="0" height="100%" width="100%"></iframe>
+		</div>-->
+	</div>
+</body>
+
+</html>

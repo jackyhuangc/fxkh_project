@@ -20,26 +20,44 @@ Vue.use(VueResource)
 // request 在发送前会把 common 数组加入 headers，而 custom，只有当访问地址非异域的时候才加入 headers
 //定义子组件，子组件必须在父组件之前定义。    
 
-Vue.http.interceptors.push(function (request, next) {
+// Vue.http.interceptors.push(function (request, next) {
 
+//   // var token = "default";
+//   // if (window.localStorage) {
+//   //   token = localStorage.getItem('token');
+//   //   if (!token) {
+//   //     localStorage.setItem('token', 'default');
+//   //     token = localStorage.getItem('token');
+//   //     // // 未授权跳转
+//   //     //window.location.href = "/";
+//   //   }
+//   // }
+
+//   // // 因为跨域，改方法设置无效
+//   // //request.headers['token'] = 'xxx'
+//   // Vue.http.headers.common.Authorization = 'WJ ' + token;
+//   // //Vue.http.headers.common['token'] = "xxx";
+
+//   // next(function (response) {
+
+//   // })
+// });
+
+Vue.http.interceptors.push(function (request, next) {
   var token = "default";
   if (window.localStorage) {
     token = localStorage.getItem('token');
-    if (!token) {
-      localStorage.setItem('token', 'default');
-      token = localStorage.getItem('token');
-      // // 未授权跳转
-      //window.location.href = "/";
-    }
   }
-
-  // 因为跨域，改方法设置无效
-  //request.headers['token'] = 'xxx'
-  Vue.http.headers.common.Authorization = 'WJ ' + token;
-  //Vue.http.headers.common['token'] = "xxx";
-
+  console.log(token);
+  Vue.http.headers.common.Authorization = 'WJ token=' + token;
   next(function (response) {
-
+    console.log(response);
+    // 如果返回401未授权，则跳转登录页面
+    if (response.status == 401) {
+      console.log("您未登录或长时间未操作，请重新登录！");
+      window.localStorage.clear();
+      window.location.href = "/";
+    }
   })
 })
 

@@ -3,19 +3,21 @@ var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
   entry: {
     'main': './src/main.js',
+    'pages/main/index': './src/pages/main/index.js',
+    'pages/usercenter/index': './src/pages/usercenter/index.js',
     'pages/rsproject/index': './src/pages/rsproject/index.js',
     'pages/emergency/index': './src/pages/emergency/index.js',
     'pages/boys/index': './src/pages/boys/index.js',
     'pages/goods/index': './src/pages/goods/index.js',
     'pages/index/index': './src/pages/index/index.js',
-    'pages/sotho/index': './src/pages/sotho/index.js',
+    'pages/social-economy/index': './src/pages/social-economy/index.js',
   },
   output: {
     path: config.build.assetsRoot,

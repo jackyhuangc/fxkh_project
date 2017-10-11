@@ -20,8 +20,8 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.dev.env
-    }),  
-    
+    }),
+
     //这不需要分析，几乎所有服务器通用的，当前路径无返回，则默认去找当前路径下index.html,index.htm等。
     //意思是你访问'http://127.0.0.1:8080',当前服务器程序无任何路由拦截输出，然后发现有绑定的静态目录文件夹，然后去那文件夹的根目录找index.html，没找到再依次找其他后缀的index文件。
     // 这是默认首页 new HtmlWebpackPlugin(), // Generates default index.html 
@@ -29,49 +29,67 @@ module.exports = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      chunks:['main']
+      chunks: ['main']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/rsproject/index.html',
-      template:'./src/pages/rsproject/index.html',
+      filename: './pages/main/index.html',
+      template: './src/pages/main/index.html',
       inject: true,
-      chunks:['pages/rsproject/index']
-    }),    
+      chunks: ['pages/main/index']
+    }),
     new HtmlWebpackPlugin({
-      filename:'./pages/emergency/index.html',
-      template:'./src/pages/emergency/index.html',
+      filename: './pages/usercenter/index.html',
+      template: './src/pages/usercenter/index.html',
       inject: true,
-      chunks:['pages/emergency/index']
-    }),    
+      chunks: ['pages/usercenter/index']
+    }),
     new HtmlWebpackPlugin({
-      filename:'./pages/fileupload/index.html',//指定生成的html存放路径
-      template:'./src/pages/fileupload/index.html',//指定html模板路径
+      filename: './pages/rsproject/index.html',
+      template: './src/pages/rsproject/index.html',
+      inject: true,
+      chunks: ['pages/rsproject/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/social-economy/index.html',
+      template: './src/pages/social-economy/index.html',
+      inject: true,
+      chunks: ['pages/social-economy/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/emergency/index.html',
+      template: './src/pages/emergency/index.html',
+      inject: true,
+      chunks: ['pages/emergency/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/fileupload/index.html',//指定生成的html存放路径
+      template: './src/pages/fileupload/index.html',//指定html模板路径
       inject: true,//是否将js等注入页面,以及指定注入的位置'head'或'body'
-      chunks:[]//需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
+      chunks: []//需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/boys/index.html',
-      template:'./src/pages/boys/index.html',
-      inject: true,
-      chunks:['pages/boys/index']
+      filename: './pages/fileupload-rs/index.html',//指定生成的html存放路径
+      template: './src/pages/fileupload-rs/index.html',//指定html模板路径
+      inject: true,//是否将js等注入页面,以及指定注入的位置'head'或'body'
+      chunks: []//需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/goods/index.html',
-      template:'./src/pages/goods/index.html',
+      filename: './pages/boys/index.html',
+      template: './src/pages/boys/index.html',
       inject: true,
-      chunks:['pages/goods/index']
+      chunks: ['pages/boys/index']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/index/index.html',
-      template:'./src/pages/index/index.html',
+      filename: './pages/goods/index.html',
+      template: './src/pages/goods/index.html',
       inject: true,
-      chunks:['pages/index/index']
+      chunks: ['pages/goods/index']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/sotho/index.html',
-      template:'./src/pages/sotho/index.html',
+      filename: './pages/index/index.html',
+      template: './src/pages/index/index.html',
       inject: true,
-      chunks:['pages/sotho/index']
+      chunks: ['pages/index/index']
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),

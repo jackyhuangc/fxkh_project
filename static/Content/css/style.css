@@ -240,7 +240,7 @@ h2 {
 
 .topleft {
     height: 50px;
-    background: url(/Content/images/topleft.jpg) no-repeat; /**/
+    background: url(../../../static/Content/images/topleft.jpg) no-repeat; /**/
     float: left;
     width: 300px;
 }
@@ -252,7 +252,7 @@ h2 {
 
 .topright {
     height: 50px;
-    background: url(/Content/images/topright.jpg) no-repeat right; /**/
+    background: url(../../../static/Content/images/topright.jpg) no-repeat right; /**/
     float: right;
     width: 300px;
 }
@@ -500,7 +500,8 @@ h2 {
 /*right.html*/
 .place {
     height: 40px;
-    background: url(../images/righttop.gif) repeat-x;
+    background:#eaf3f5; /*url(../images/righttop.gif) repeat-x;*/
+    border-bottom: 1px solid #e4ebeb;
 }
 
     .place span {
@@ -1597,8 +1598,9 @@ h2 {
 
 /*datepicker*/
 .datainp {
-    width: 148px;
+    width: 150px;
     height: 26px;
+    line-height: 26px;
     border: 1px #A5D2EC solid;
 }
 
@@ -1621,3 +1623,29 @@ h2 {
     cursor: pointer;
     color: white;
 }
+
+/***********表格样式修改2017.06.15*************/
+  .tablelist
+  {
+    background: white;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-break:keep-all;
+    border:0px;
+  }
+  .tablelist th{
+    background:none;
+    background-color:#56a2cf;
+    color:#fff;
+    border-bottom:0px;
+  }
+  .tablelist td {
+    border-right:0px;
+  }  
+  .tablelist tbody tr{
+    border-bottom: 1px solid #e4ebeb;
+  }
+  .tablelist tbody tr.odd {
+    background: #eaf3f5;
+  }
+  .datasel {
+	width: 150px;
+  }

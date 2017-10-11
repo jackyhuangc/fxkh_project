@@ -6,7 +6,7 @@
  * Copyright 2014 Ben Plum; MIT Licensed 
  */
 
-;(function ($, window) {
+; (function ($, window) {
 	"use strict";
 
 	var supported = (window.File && window.FileReader && window.FileList);
@@ -49,7 +49,7 @@
 		 * @param opts [object] <{}> "Options object"
 		 * @example $.dropper("defaults", opts);
 		 */
-		defaults: function(opts) {
+		defaults: function (opts) {
 			options = $.extend(options, opts || {});
 			return $(this);
 		}
@@ -99,9 +99,9 @@
 		html += '>';
 
 		$dropper.addClass("dropper")
-				.append(html);
+			.append(html);
 
-		var data =  $.extend({
+		var data = $.extend({
 			$dropper: $dropper,
 			$input: $dropper.find(".dropper-input"),
 			queue: [],
@@ -110,11 +110,11 @@
 		}, opts);
 
 		$dropper.on("click.dropper", ".dropper-dropzone", data, _onClick)
-				.on("dragenter.dropper", data, _onDragEnter)
-				.on("dragover.dropper", data, _onDragOver)
-				.on("dragleave.dropper", data, _onDragOut)
-				.on("drop.dropper", ".dropper-dropzone", data, _onDrop)
-				.data("dropper", data);
+			.on("dragenter.dropper", data, _onDragEnter)
+			.on("dragover.dropper", data, _onDragOver)
+			.on("dragleave.dropper", data, _onDragOut)
+			.on("drop.dropper", ".dropper-dropzone", data, _onDrop)
+			.data("dropper", data);
 
 		data.$input.on("change.dropper", data, _onChange);
 	}
@@ -133,9 +133,14 @@
 
 		//console.log(data.postData.statecode);
 		//临时解决方案，若条件不可用，不可点击上传
-		if($("#selectStateDistrict").val()=="000000"||$("#selectCountryDistrict").val()=="000000")
-		{
+		if ($("#selectPlanType").val() == "2" || $("#selectPlanType").val() == "3") {
+			alert("专项预案需选择具体的预案类型！");
+		}
+		else if ($("#selectStateDistrict").val() == "000000" || $("#selectCountryDistrict").val() == "000000") {
 			alert("请先选择市州及区县！");
+		}
+		else if (($("#selectPlanType").val() == "31" || $("#selectPlanType").val() == "32" || $("#selectPlanType").val() == "33") && $("#selectRsProject").val() == "") {
+			alert("水库预案必须选择对应水库！");
 		}
 		else
 			data.$input.trigger("click");
@@ -153,7 +158,7 @@
 
 		var data = e.data,
 			files = data.$input[0].files;
-		
+
 		console.log("_onChange");
 		if (files.length) {
 			_handleUpload(data, files);
@@ -246,17 +251,17 @@
 
 			newFiles.push(file);
 			data.queue.push(file);
-	   }
+		}
 
-	   if (!data.uploading) {
-		   $(window).on("beforeunload.dropper", function(){
+		if (!data.uploading) {
+			$(window).on("beforeunload.dropper", function () {
 				return 'You have uploads pending, are you sure you want to leave this page?';
 			});
 
 			data.uploading = true;
 		}
 
-		data.$dropper.trigger("start.dropper", [ newFiles ]);
+		data.$dropper.trigger("start.dropper", [newFiles]);
 
 		_checkQueue(data);
 	}
@@ -274,7 +279,7 @@
 		// remove lingering items from queue
 		for (var i in data.queue) {
 
-			console.log("data.queue[i].error"+data.queue[i].error);
+			console.log("data.queue[i].error" + data.queue[i].error);
 			if (data.queue.hasOwnProperty(i) && !data.queue[i].complete && !data.queue[i].error) {
 				newQueue.push(data.queue[i]);
 			}
@@ -331,7 +336,7 @@
 		console.log("_uploadFile");
 		if (file.size >= data.maxSize) {
 			file.error = true;
-			data.$dropper.trigger("fileError.dropper", [ file, "单个文件大小不能超过1.5G！" ]);
+			data.$dropper.trigger("fileError.dropper", [file, "单个文件大小不能超过1.5G！"]);
 
 			_checkQueue(data);
 		} else {
@@ -340,14 +345,14 @@
 				url: data.action,
 				data: formData,
 				type: "POST",
-			    contentType:false,
+				contentType: false,
 				processData: false,
 				cache: false,
-				xhr: function() {
+				xhr: function () {
 					var $xhr = $.ajaxSettings.xhr();
 
 					if ($xhr.upload) {
-						$xhr.upload.addEventListener("progress", function(e) {
+						$xhr.upload.addEventListener("progress", function (e) {
 							var percent = 0,
 								position = e.loaded || e.position,
 								total = e.total;
@@ -356,28 +361,28 @@
 								percent = Math.ceil(position / total * 100);
 							}
 
-							data.$dropper.trigger("fileProgress.dropper", [ file, percent ]);
+							data.$dropper.trigger("fileProgress.dropper", [file, percent]);
 						}, false);
 					}
 
 					return $xhr;
 				},
-				beforeSend: function(e) {
-					data.$dropper.trigger("fileStart.dropper", [ file ]);
+				beforeSend: function (e) {
+					data.$dropper.trigger("fileStart.dropper", [file]);
 				},
-				success: function(response, status, jqXHR) {
+				success: function (response, status, jqXHR) {
 					file.complete = true;
 					console.log(data.queue.length);
 					//data.queue=[];
-					data.$dropper.trigger("fileComplete.dropper", [ file, response ]);
+					data.$dropper.trigger("fileComplete.dropper", [file, response]);
 
 					_checkQueue(data);
 				},
-				error: function(jqXHR, status, error) {
+				error: function (jqXHR, status, error) {
 					file.error = true;
 					console.log(data.queue.length);
 					//data.queue=[];
-					data.$dropper.trigger("fileError.dropper", [ file, error ]);
+					data.$dropper.trigger("fileError.dropper", [file, error]);
 
 					_checkQueue(data);
 				}
@@ -385,7 +390,7 @@
 		}
 	}
 
-	$.fn.dropper = function(method) {
+	$.fn.dropper = function (method) {
 		if (pub[method]) {
 			return pub[method].apply(this, Array.prototype.slice.call(arguments, 1));
 		} else if (typeof method === 'object' || !method) {
@@ -394,7 +399,7 @@
 		return this;
 	};
 
-	$.dropper = function(method) {
+	$.dropper = function (method) {
 		if (method === "defaults") {
 			pub.defaults.apply(this, Array.prototype.slice.call(arguments, 1));
 		}

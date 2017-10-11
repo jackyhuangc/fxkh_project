@@ -53,49 +53,67 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      chunks:['main']
+      chunks: ['main']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/rsproject/index.html',
-      template:'./src/pages/rsproject/index.html',
+      filename: './pages/main/index.html',
+      template: './src/pages/main/index.html',
       inject: true,
-      chunks:['pages/rsproject/index']
-    }),   
-    new HtmlWebpackPlugin({
-      filename:'./pages/emergency/index.html',
-      template:'./src/pages/emergency/index.html',
-      inject: true,
-      chunks:['pages/emergency/index']
+      chunks: ['pages/main/index']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/fileupload/index.html',//指定生成的html存放路径
-      template:'./src/pages/fileupload/index.html',//指定html模板路径
+      filename: './pages/usercenter/index.html',
+      template: './src/pages/usercenter/index.html',
+      inject: true,
+      chunks: ['pages/usercenter/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/rsproject/index.html',
+      template: './src/pages/rsproject/index.html',
+      inject: true,
+      chunks: ['pages/rsproject/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/social-economy/index.html',
+      template: './src/pages/social-economy/index.html',
+      inject: true,
+      chunks: ['pages/social-economy/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/emergency/index.html',
+      template: './src/pages/emergency/index.html',
+      inject: true,
+      chunks: ['pages/emergency/index']
+    }),
+    new HtmlWebpackPlugin({
+      filename: './pages/fileupload/index.html',//指定生成的html存放路径
+      template: './src/pages/fileupload/index.html',//指定html模板路径
       inject: true,//是否将js等注入页面,以及指定注入的位置'head'或'body'
-      chunks:[]//需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果，这里是配置为不引用      
+      chunks: []//需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果，这里是配置为不引用      
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/boys/index.html',
-      template:'./src/pages/boys/index.html',
-      inject: true,
-      chunks:['pages/boys/index']
+      filename: './pages/fileupload-rs/index.html',//指定生成的html存放路径
+      template: './src/pages/fileupload-rs/index.html',//指定html模板路径
+      inject: true,//是否将js等注入页面,以及指定注入的位置'head'或'body'
+      chunks: []//需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/goods/index.html',
-      template:'./src/pages/goods/index.html',
+      filename: './pages/boys/index.html',
+      template: './src/pages/boys/index.html',
       inject: true,
-      chunks:['pages/goods/index']
+      chunks: ['pages/boys/index']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/index/index.html',
-      template:'./src/pages/index/index.html',
+      filename: './pages/goods/index.html',
+      template: './src/pages/goods/index.html',
       inject: true,
-      chunks:['pages/index/index']
+      chunks: ['pages/goods/index']
     }),
     new HtmlWebpackPlugin({
-      filename:'./pages/sotho/index.html',
-      template:'./src/pages/sotho/index.html',
+      filename: './pages/index/index.html',
+      template: './src/pages/index/index.html',
       inject: true,
-      chunks:['pages/sotho/index']
+      chunks: ['pages/index/index']
     }),
 
     // 暂时没用到
@@ -121,7 +139,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     //   chunks: ['vendor'],
     //   filename: "/static/js/manifest.js"//导出的文件的名称
     // }),
-    
+
     // copy custom static assets
     new CopyWebpackPlugin([
       {
