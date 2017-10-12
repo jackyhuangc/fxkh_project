@@ -176,38 +176,28 @@ export default {
 				return;
 			}
 
-			// 该接口为8763的本地接口
-			this.$http.get("http://localhost:8763/rest/template/xx")
-				.then((rep) => {
-					console.log(rep.bodyText);
-					console.log(rep);
-				});
-
-			// 该接口为8763作为zuul带来的路由接口
-			this.$http.get("http://localhost:8763/test1?accessToken=xx")
-				.then((rep) => {
-					console.log(rep.bodyText);
-					console.log(rep);
-				});
-
-			var thisURL = document.URL;
-			return;
-			console.log("*******" + thisURL);
-			var returnUrl = "";
-			if (thisURL.split('?').length > 1) {
-				// 这是单点登录
-				var getval = thisURL.split('?')[1];
-				var urlParams = getval.split("&");
-				for (var i = 0; i < urlParams.length; i++) {
-					var key = urlParams[i].split('=')[0];
-					var value = urlParams[i].split('=')[1];
-					console.log(key + "***" + value);
-					if (key == "returnUrl") {
-						returnUrl = value;
-						break;
-					}
-				}
+			if (this.username != "admin" && this.password != "admin123") {
+				this.error = "invalid username or password";
+				$('.UserName').focus();
+				return;
 			}
+			// // 该接口为8763的本地接口
+			// this.$http.get("http://localhost:8763/rest/template/xx")
+			// 	.then((rep) => {
+			// 		console.log(rep.bodyText);
+			// 		console.log(rep);
+			// 	});
+
+			// // 该接口为8763作为zuul带来的路由接口
+			// this.$http.get("http://localhost:8763/test1?accessToken=xx")
+			// 	.then((rep) => {
+			// 		console.log(rep.bodyText);
+			// 		console.log(rep);
+			// 	});
+
+			// 模拟登录
+			window.location.href = window.location.origin + "/pages/main/index.html";
+			return;
 
 			this.error = "";
 			this.$http.get("/api/UserCenter/CheckLogin"
@@ -218,31 +208,17 @@ export default {
 				.then((rep) => {
 					console.log(rep.data);
 					if (rep.data.code == '000') {
-						// 如果有回调地址，则是单点登录,将返回用户凭证
-						if (returnUrl) {
-							console.log(returnUrl + "?token=" + rep.data.data.token);
-							window.location = "http://" + returnUrl + "?token=" + rep.data.data.token;
+						localStorage.setItem('remember', this.remember);
+						localStorage.setItem('token', rep.data.data.token);
 
-							//window.open("http://"+returnUrl+"?token="+rep.data.data.token,"_blank");
-							// this.$http.get("/api/UserCenter/GetUserInfoByToken"   
-							// +"?token="+rep.data.data.token)
-							//   .then((rep) => {
-							//     console.log(rep.data);
-							//   });
+						if (!window.location.origin) {
+							console.log(window.location.protocol);
+							window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
 						}
-						else {
-							localStorage.setItem('remember', this.remember);
-							localStorage.setItem('token', rep.data.data.token);
 
-							if (!window.location.origin) {
-								console.log(window.location.protocol);
-								window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-							}
-
-							console.log(window.location.origin);
-							console.log(window.location.href);
-							window.location.href = window.location.origin + "/pages/main/index.html";
-						}
+						console.log(window.location.origin);
+						console.log(window.location.href);
+						window.location.href = window.location.origin + "/pages/main/index.html";
 					}
 					else {
 						this.error = rep.data.error;
@@ -261,36 +237,9 @@ export default {
 	},
 	mounted: function() {
 		console.log("mounted");
-		this.username = "admin";
-		this.password = "111111";
-		this.login();
-		return;
-		var thisURL = document.URL;
-		if (thisURL.split('?').length > 1) {
-			// 这是单点登录
-			this.sRemember = false;
-		}
-		else {
-			this.remember = localStorage.getItem('remember') == 'true';
-			if (this.remember) {
-				$('.UserName').attr('disabled', 'disabled');
-				$('.Password').attr('disabled', 'disabled');
-				$('#remember').attr('disabled', 'disabled');
-				$('#login').attr('disabled', 'disabled');
-				// 自动登录
-				this.bottonText = "正在自动登录...";
-				setTimeout(function() {
-
-					//console.log(window.location);
-					console.log(window.location.origin);
-					if (!window.location.origin) {
-						window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-					}
-
-					window.location.href = window.location.origin + "/pages/main/index.html";
-				}, 2000);
-			}
-		}
+		// this.username = "admin";
+		// this.password = "111111";
+		// this.login();
 	},
 	updated: function() {
 		console.log("updated");

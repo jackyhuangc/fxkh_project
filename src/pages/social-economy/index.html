@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>社会经济数据</title>
+	<title>Futures</title>
 	<link href="../../../static/favicon.ico" rel="icon" />
 	<link href="../../../static/Content/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="../../../static/Content/js/jedate/skin/jedate.css" rel="stylesheet" />
@@ -16,25 +16,41 @@
 	</style>
 </head>
 
-<body style="min-width:1137px;">
-	<div class="place">
-		<span>位置：</span>
-		<ul class="placeul">
-			<li><a href="/pages/index/index.html">首页</a></li>
-			<li><a href="#">社会经济</a></li>
-			<li><a href="#">社会经济</a></li>
-		</ul>
-	</div>
+<body style="min-width:1137px;height:700px;overflow:hidden;">
+	<div id="app" class="rightinfo" style="height:100%;width:100%;">
 
-	<div id="app" class="rightinfo">
-		<!--
-		<hel></hel>-->
 	</div>
-	<script src="../../../static/Content/js/layui/layui.js" charset="utf-8"></script>
 	<script src="../../../static/Content/js/jedate/jedate.js"></script>
 	<script src="../../../static/Content/js/utils.js"></script>
 	<script src="../../../static/Content/js/jquery-1.8.3.min.js"></script>
+	<script src="../../../static/Content/js/layui/layui.js" charset="utf-8"></script>
 	<script src="../../../static/global.config.js"></script>
+	<script src="../../../static/echarts.min.js"></script>
+	<script src="../../../static/china.js"></script>
+	<script src="../../../static/world.js"></script>
+	<script src="../../../static/utils.js"></script>
+	<script>
+		$(document).ready(function () {
+			console.log("窗口高度");
+			$("#app").height($(window).height());
+			// alert($(window).height()); //浏览器时下窗口可视区域高度   
+			// alert($(document).height()); //浏览器时下窗口文档的高度   
+			// alert($(document.body).height());//浏览器时下窗口文档body的高度   
+			// alert($(document.body).outerHeight(true));//浏览器时下窗口文档body的总高度 包括border padding margin   
+			// alert($(window).width()); //浏览器时下窗口可视区域宽度   
+			// alert($(document).width());//浏览器时下窗口文档对于象宽度   
+			// alert($(document.body).width());//浏览器时下窗口文档body的高度   
+			// alert($(document.body).outerWidth(true));//浏览器时下窗口文档body的总宽度 包括border padding margin   
+
+
+			// 由于layui的模块化组织方式，需先进行模块引用
+			layui.define(['layer', 'form'], function (exports) {
+				var layer = layui.layer
+					, form = layui.form;
+				exports('index', {}); //注意，这里是模块输出的核心，模块名必须和use时的模块名一致
+			});
+		});
+	</script>
 </body>
 
 </html>
