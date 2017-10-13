@@ -13,12 +13,12 @@ Vue.http.options.xhr = { withCredentials: true }
 // Vue.http.options.emulateJSON = true
 //emulateHTTP
 
-// var token = localStorage.getItem('token');
-// if (!token) {
-//   console.log("您未登录或长时间未操作，请重新登录！");
-//   window.localStorage.clear();
-//   window.location.href = "/";
-// }
+var token = localStorage.getItem('token');
+if (!token) {
+  console.log("您未登录或长时间未操作，请重新登录！");
+  window.localStorage.clear();
+  window.location.href = "/";
+}
 // else {
 //   Vue.http.get("/api/UserCenter/GetUserInfoByToken"
 //     + "?token=" + token)

@@ -6,6 +6,14 @@ import Index from './index.vue'
 /*使用VueResource插件*/
 Vue.use(VueResource)
 
+
+var token = localStorage.getItem('token');
+if (!token) {
+  console.log("您未登录或长时间未操作，请重新登录！");
+  window.localStorage.clear();
+  window.location.href = "/";
+}
+
 Vue.http.interceptors.push(function (request, next) {
 
   var token = "default";

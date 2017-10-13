@@ -70,6 +70,7 @@ export default {
       });
     },
     exit: function() {
+
       window.localStorage.clear();
       window.location = "/";
     }

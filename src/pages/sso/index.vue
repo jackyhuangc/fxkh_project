@@ -180,6 +180,8 @@ export default {
 				$('.UserName').focus();
 				return;
 			}
+
+			localStorage.setItem('token', "admin|xlkjfdkjaklfjdsflxfdslaf");
 			// // 该接口为8763的本地接口
 			// this.$http.get("http://localhost:8763/rest/template/xx")
 			// 	.then((rep) => {
