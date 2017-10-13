@@ -152,7 +152,7 @@ export default {
 	},
 	data() {
 		return {
-			sRemember: true,
+			sRemember: false,
 			remember: false,
 			username: '',
 			password: '',
