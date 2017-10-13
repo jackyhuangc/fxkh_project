@@ -95,8 +95,7 @@
 				<div class="row-fluid" style="text-align:center; ">
 
 					<div style="margin-bottom:50px;">
-						<a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logo2.png" style="width:80px;float:left;" />四川省防汛抗旱指挥系统<br />单点登录门户</a>
-
+						<a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" style="width:80px;" />xxxxxxxxxxxxxxxxxxxx</a>
 					</div>
 				</div>
 				<div class="row-fluid">
