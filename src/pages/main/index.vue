@@ -4,23 +4,17 @@
       <div class="topleft">
         <a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/zhxx_logo.png" height="50" width="50" title="系统首页" style="float: left;" />xxxxxxxxx</a>
       </div>
-
-      <!--ul class="nav">
-                        <li>
-                        <router-link to="/left">left</router-link>
-                        </li>
-                        <li>
-                        <router-link to="/left1">left1</router-link>
-                        </li>
-                			</ul-->
-
       <top v-bind:menus="menus" ref="top">
         <!--这是顶部菜单-->
       </top>
 
       <div class="topright">
         <div class="user">
-          <span>{{user}}</span>|
+          <span>{{user}}</span>
+          <a href="javascript:void(0);" @click="download()">
+            <i>Download</i>
+          </a>
+          |
           <a href="javascript:void(0);" @click="exit()">
             <i>Exit</i>
           </a>
@@ -29,19 +23,24 @@
     </div>
 
     <div id="rightside">
-      <iframe id="rightFrame" name="rightFrame" src="/pages/social-economy/index.html" frameborder="0" height="100%" width="100%"></iframe>
+      <iframe id="rightFrame" name="rightFrame" src="/pages/monitor-center/index.html" frameborder="0" height="100%" width="100%"></iframe>
     </div>
+
+    <download ref="down">
+    </download>
   </div>
 </template>
 
 <script>
 import top from './nav/top.vue'
 import left from './nav/left.vue'
+import download from './tool/tool.download.vue'
 export default {
   name: 'app1',
   components: {
     top,
-    left
+    left,
+    download
   },
   data() {
 
@@ -55,7 +54,21 @@ export default {
     }
   },
   methods: {
+    download: function() {
 
+      var inf = this.$refs.down;
+      layer.open({
+        type: 1,
+        skin: 'layui-layer-azure',
+        title: false, //不显示标题
+        area: ['600px', '330px'],
+        content: $('#panel_down'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+        success: function(layero, index) {
+        },
+        cancel: function() {
+        }
+      });
+    },
     exit: function() {
       window.localStorage.clear();
       window.location = "/";

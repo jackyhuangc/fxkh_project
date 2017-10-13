@@ -176,7 +176,7 @@ export default {
 				return;
 			}
 
-			if (this.username != "admin" && this.password != "admin123") {
+			if (this.username != "admin" || this.password != "admin123") {
 				this.error = "invalid username or password";
 				$('.UserName').focus();
 				return;

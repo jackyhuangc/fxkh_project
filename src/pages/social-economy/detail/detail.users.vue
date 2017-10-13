@@ -1,6 +1,6 @@
 <template>
   <div id="app" v-show="show">
-    <div id="main2" style="height:100%;width:100%;">xxxxxffffw</div>
+    <div id="main3" style="height:100%;width:100%;">xxxxxffffw</div>
   </div>
 </template>
 
@@ -33,47 +33,87 @@ export default {
     },
 
     curve(types, datas) {
-      var myChart = echarts.init(document.getElementById('main2'));
+      var myChart = echarts.init(document.getElementById('main3'));
 
       var option = {
+        // title: {
+        //     text: '世界人口总量',
+        //     subtext: '数据来自网络'
+        // },
         tooltip: {
-          trigger: 'item',
-          formatter: "{a} <br/>{b}: {c} ({d}%)"
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
         },
         // legend: {
-        //   orient: 'vertical',
-        //   x: 'left',
-        //   data: types
+        //     data: ['2011年', '2012年']
         // },
-        //color: ['red', 'green', 'yellow', 'blueviolet'],
+        grid: {
+          x: 0,
+          x2: 0,
+          y: 10,
+          y2: 20
+        },
+        xAxis: {
+          show: false,
+          type: 'value',
+          boundaryGap: [0, 1],
+          splitLine: { show: false }//去除网格线
+        },
+        yAxis: {
+          show: false,
+          type: 'category',
+          data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)'],
+
+          axisLabel: {
+            margin: -45,
+            textStyle: {
+              color: 'red',
+              fontSize: 14
+            }
+          },
+          splitLine: { show: false }//去除网格线
+        },
         series: [
           {
-            name: '终端平台',
-            type: 'pie',
-            radius: ['50%', '70%'],
-            avoidLabelOverlap: false,
-            label: {
+            name: '2011年',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 630230],
+
+            //配置样式
+            itemStyle: {
+              //通常情况下：
               normal: {
-                show: false,
-                position: 'center'
-              },
-              emphasis: {
-                show: false,
-                textStyle: {
-                  fontSize: '30',
-                  fontWeight: 'bold'
+                //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
+                color: function(params) {
+                  var colorList = [
+                    '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                    '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                    '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0',
+                    '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                    '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                    '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                  ];
+                  return colorList[params.dataIndex];
                 }
+              },
+              //鼠标悬停时：
+              emphasis: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
               }
-            },
-            labelLine: {
-              normal: {
-                show: false
-              }
-            },
-            data: datas
-          }
+            }
+          },
+          // {
+          //     name: '2012年',
+          //     type: 'bar',
+          //     data: [19325, 23438, 31000, 121594, 134141, 681807]
+          // }
         ]
       };
+
 
       myChart.setOption(option);
     }

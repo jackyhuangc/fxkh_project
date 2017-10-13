@@ -38,6 +38,12 @@ module.exports = merge(baseWebpackConfig, {
       chunks: ['pages/main/index']
     }),
     new HtmlWebpackPlugin({
+      filename: './pages/monitor-center/index.html',
+      template: './src/pages/monitor-center/index.html',
+      inject: true,
+      chunks: ['pages/monitor-center/index']
+    }),
+    new HtmlWebpackPlugin({
       filename: './pages/usercenter/index.html',
       template: './src/pages/usercenter/index.html',
       inject: true,
