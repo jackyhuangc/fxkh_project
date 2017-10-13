@@ -81,49 +81,10 @@ export default {
   created: function() { },
   mounted: function() {
 
-    var time = [];
-    var last = [];
-    var buy = [];
-    var sale = [];
-    var rawData = [];
-    //console.log(ret.Data.length);
-    var dataSource = [];
-    for (var i = 0; i < 20; i++) {
-      dataSource.push({
-        ModifyTime: '2017-10-1' + i % 10 + ' 12:22',
-        LastPrice: 123.00,
-        OpenPrice: 100.00,
-        ClosePrice: 200.00,
-        LowestPrice: 90.00,
-        HighestPrice: 200.00,
-      });
-    }
-    for (var i = 0; i < dataSource.length; i++) {
-      if (!dataSource[i].ModifyTime) {
-        continue;
-      }
-      time.push(dataSource[i].ModifyTime.substr(0, 16));
-      last.push(formatPrice(dataSource[i].LastPrice));
-      var data = [];
-      data.push('-');
-      data.push(dataSource[i].OpenPrice);
-      data.push(dataSource[i].ClosePrice);
-      data.push('-');
-      data.push('-');
-      // 5分钟内的最低
-      data.push(dataSource[i].LowestPrice);
-      // 5分钟内的最高
-      data.push(dataSource[i].HighestPrice);
-      data.push('-');
-      data.push('-');
-      data.push('-');
-      rawData.push(data);
-    }
-
-    var types = ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'];
+    var types = ['ios', 'andorid', '联盟广告', '视频广告', '搜索引擎'];
     var datas = [
-      { value: 335, name: '直接访问' },
-      { value: 310, name: '邮件营销' },
+      { value: 335, name: 'ios' },
+      { value: 310, name: 'andorid' },
       { value: 234, name: '联盟广告' },
       { value: 135, name: '视频广告' },
       { value: 1548, name: '搜索引擎' }

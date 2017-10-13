@@ -2,7 +2,7 @@
   <div id="app">
     <div style="height:50px;">
       <div class="topleft">
-        <a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/zhxx_logo.png" height="50" width="50" title="系统首页" style="float: left;" />xxxxxxxxx</a>
+        <a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" height="50" width="50" title="系统首页" style="float: left;margin-top:0px;margin-left:0px;" />xxxxxxxxx</a>
       </div>
       <top v-bind:menus="menus" ref="top">
         <!--这是顶部菜单-->

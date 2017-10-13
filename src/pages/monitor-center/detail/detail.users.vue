@@ -36,10 +36,6 @@ export default {
       var myChart = echarts.init(document.getElementById('main3'));
 
       var option = {
-        // title: {
-        //     text: '世界人口总量',
-        //     subtext: '数据来自网络'
-        // },
         tooltip: {
           trigger: 'axis',
           axisPointer: {
@@ -64,7 +60,7 @@ export default {
         yAxis: {
           show: false,
           type: 'category',
-          data: ['巴西', '印尼', '美国', '印度', '中国', '世界人口(万)'],
+          data: types,
 
           axisLabel: {
             margin: -45,
@@ -77,9 +73,9 @@ export default {
         },
         series: [
           {
-            name: '2011年',
+            name: '用户总量',
             type: 'bar',
-            data: [18203, 23489, 29034, 104970, 131744, 630230],
+            data: datas,
 
             //配置样式
             itemStyle: {
@@ -105,12 +101,7 @@ export default {
                 shadowColor: 'rgba(0, 0, 0, 0.5)'
               }
             }
-          },
-          // {
-          //     name: '2012年',
-          //     type: 'bar',
-          //     data: [19325, 23438, 31000, 121594, 134141, 681807]
-          // }
+          }
         ]
       };
 
@@ -121,68 +112,14 @@ export default {
   created: function() { },
   mounted: function() {
 
-    var time = [];
-    var last = [];
-    var buy = [];
-    var sale = [];
-    var rawData = [];
-    //console.log(ret.Data.length);
-    var dataSource = [];
-    for (var i = 0; i < 20; i++) {
-      dataSource.push({
-        ModifyTime: '2017-10-1' + i % 10 + ' 12:22',
-        LastPrice: 123.00,
-        OpenPrice: 100.00,
-        ClosePrice: 200.00,
-        LowestPrice: 90.00,
-        HighestPrice: 200.00,
-      });
-    }
-    for (var i = 0; i < dataSource.length; i++) {
-      if (!dataSource[i].ModifyTime) {
-        continue;
-      }
-      time.push(dataSource[i].ModifyTime.substr(0, 16));
-      last.push(formatPrice(dataSource[i].LastPrice));
-      var data = [];
-      data.push('-');
-      data.push(dataSource[i].OpenPrice);
-      data.push(dataSource[i].ClosePrice);
-      data.push('-');
-      data.push('-');
-      // 5分钟内的最低
-      data.push(dataSource[i].LowestPrice);
-      // 5分钟内的最高
-      data.push(dataSource[i].HighestPrice);
-      data.push('-');
-      data.push('-');
-      data.push('-');
-      rawData.push(data);
-    }
-
-    var types = ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'];
-    var datas = [
-      { value: 335, name: '直接访问' },
-      { value: 310, name: '邮件营销' },
-      { value: 234, name: '联盟广告' },
-      { value: 135, name: '视频广告' },
-      { value: 1548, name: '搜索引擎' }
-    ];
+    var types = ['巴西', '印尼', '美国', '印度', '中国'];
+    var datas = [111, 232, 112, 323, 34343];
     this.curve(types, datas);
 
   },
   updated: function() { },
   destroyed: function() { }
 }
-
-// layui.use(['element', 'layer', 'form', 'layedit', 'laydate'], function() {
-//   var element = layui.element()
-//   var form = layui.form()
-//     , layer = layui.layer
-//     , layedit = layui.layedit
-//     , laydate = layui.laydate;
-
-// });
 
 </script>
 

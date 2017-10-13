@@ -71,3 +71,34 @@ var change_date = function (days) {
 
 	return year + '-' + month + '-' + day;
 };
+
+var change_time = function (minutes) {
+	// 参数表示在当前日期下要增加的天数
+	var now = new Date();
+	// + 1 代表日期加，- 1代表日期减
+	//now.setDate((now.getDate()) + 1 * days);
+	now.setMinutes((now.getMinutes()) + 1 * minutes);
+	var year = now.getFullYear();
+	var month = now.getMonth() + 1;
+	var day = now.getDate();
+	var hour = now.getHours();
+	var minute = now.getMinutes();
+	var second = now.getSeconds();
+	if (month < 10) {
+		month = '0' + month;
+	}
+	if (day < 10) {
+		day = '0' + day;
+	}
+	if (hour < 10) {
+		hour = '0' + hour;
+	}
+	if (minute < 10) {
+		minute = '0' + minute;
+	}
+	if (second < 10) {
+		second = '0' + second;
+	}
+
+	return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+};
