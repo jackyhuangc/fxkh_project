@@ -152,7 +152,7 @@ export default {
 	},
 	data() {
 		return {
-			sRemember: false,
+			sRemember: true,
 			remember: false,
 			username: '',
 			password: '',
@@ -181,6 +181,7 @@ export default {
 				return;
 			}
 
+			localStorage.setItem('remember', this.remember);
 			localStorage.setItem('token', "admin|xlkjfdkjaklfjdsflxfdslaf");
 			// // 该接口为8763的本地接口
 			// this.$http.get("http://localhost:8763/rest/template/xx")
@@ -241,6 +242,9 @@ export default {
 		// this.username = "admin";
 		// this.password = "111111";
 		// this.login();
+		if (localStorage.getItem("remember")) {
+			window.location.href = window.location.origin + "/pages/main/index.html";
+		}
 	},
 	updated: function() {
 		console.log("updated");
