@@ -90,14 +90,16 @@ export default {
       //$("#my_world_map").height(this.screenWidth);
       // console.log(this.screenHeight);
     },
-    loadIpResources() {
+    loadIpResources(data) {
 
-      var data = [
-        { name: '海门', value: 90 }
-      ];
+      if (!data) {
+        data = [
+          { name: '海门', value: 90 }
+        ];
+      }
 
       var geoCoordMap = {
-        '海门': [121.15, 31.89]
+        'China': [121.15, 31.89]
       };
 
       var res = [];
@@ -124,7 +126,7 @@ export default {
             for (var i = 0; i < myseries.length; i++) {
               for (var j = 0; j < myseries[i].data.length; j++) {
                 if (myseries[i].data[j].name == params.name) {
-                  res += '使用人数 : ' + myseries[i].data[j].value[2];
+                  res += 'Users : ' + myseries[i].data[j].value[2];
                   break;
                 }
               }
@@ -296,7 +298,7 @@ export default {
             name: 'pm2.5',
             type: 'effectScatter',
             coordinateSystem: 'geo',
-            data: this.loadIpResources(),
+            data: this.loadIpResources([]),
             symbolSize: function(val) {
               return val[2] / 10;
             },
@@ -325,16 +327,26 @@ export default {
       // 定期查询是否有变化
       var vm = this;
       setInterval(function() {
-        var op = myChart.getOption();
-        //var obj=op.series[0].data[0];
 
-        // 修改具体的指标
-        //obj.value[2]=Math.random()*100;
-        op.series[0].data = vm.loadIpResources();
+        vm.$http.get("http://localhost:8762/GetRegionDistribution")
+          .then((rep) => {
+            var datas = [];
 
-        // 更新具体的指标
-        myChart.setOption(op);
-      }, 5000);
+            $.each(rep.data, function(index, element) {
+              datas.push({ name: element.region, value: element.users });
+            });
+            // console.log(rep.bodyText);
+            // console.log(rep);
+            var op = myChart.getOption();
+
+            // 修改具体的指标
+            //obj.value[2]=Math.random()*100;
+            op.series[0].data = vm.loadIpResources(datas);
+
+            // 更新具体的指标
+            myChart.setOption(op);
+          });
+      }, 2000);
     }
   },
   created: function() {

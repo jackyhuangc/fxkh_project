@@ -80,17 +80,20 @@ export default {
   },
   created: function() { },
   mounted: function() {
+    var vm = this;
+    this.$http.get("http://localhost:8762/GetTerminalDistribution")
+      .then((rep) => {
+        var types = [];
+        var datas = [];
 
-    var types = ['ios', 'andorid', '联盟广告', '视频广告', '搜索引擎'];
-    var datas = [
-      { value: 335, name: 'ios' },
-      { value: 310, name: 'andorid' },
-      { value: 234, name: '联盟广告' },
-      { value: 135, name: '视频广告' },
-      { value: 1548, name: '搜索引擎' }
-    ];
-    this.curve(types, datas);
-
+        $.each(rep.data, function(index, element) {
+          types.push(element.terminal);
+          datas.push({ name: element.terminal, value: element.users });
+        });
+        vm.curve(types, datas);
+        // console.log(rep.bodyText);
+        // console.log(rep);
+      });
   },
   updated: function() { },
   destroyed: function() { }

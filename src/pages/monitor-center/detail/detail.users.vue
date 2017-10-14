@@ -112,10 +112,20 @@ export default {
   created: function() { },
   mounted: function() {
 
-    var types = ['巴西', '印尼', '美国', '印度', '中国'];
-    var datas = [111, 232, 112, 323, 34343];
-    this.curve(types, datas);
+    var vm = this;
+    this.$http.get("http://localhost:8762/GetRegionDistribution")
+      .then((rep) => {
+        var types = [];
+        var datas = [];
 
+        $.each(rep.data, function(index, element) {
+          types.push(element.region);
+          datas.push({ name: element.region, value: element.users });
+        });
+        vm.curve(types, datas);
+        // console.log(rep.bodyText);
+        // console.log(rep);
+      });
   },
   updated: function() { },
   destroyed: function() { }

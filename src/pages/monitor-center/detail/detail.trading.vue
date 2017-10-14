@@ -1,5 +1,5 @@
 <template>
-  <div id="app1" v-show="show" style="font-size: 16px;text-align:center; overflow:hidden;">
+  <div id="app1" v-show="show" style="font-size: 16px;color:#FF6600; text-align:left; overflow:hidden;">
 
   </div>
 </template>
@@ -22,18 +22,27 @@ export default {
   mounted: function() {
     var vm = this;
     var begin = change_time(-24 * 60);
+    // 定期查询是否有变化
+    var vm = this;
     setInterval(function() {
 
-      //console.log(begin.format("yyyy-MM-dd hh:mm:ss"));
-      // 从数据库里面查询最新的交易信息
-      $("#app1").append("<div style='font-size: 16px;'>fffffffffff" + new Date().getTime() + "</div>");
-      var div = document.getElementById('app1');
-      div.scrollTop = div.scrollHeight;
+      vm.$http.get("http://localhost:8762/GetOrderBillByTime?begin=" + begin + "&end=2099-12-31%2000:00:00")
+        .then((rep) => {
+          var datas = [];
 
-      // 最后的时间
-      begin = change_time(-1);
-      //begin = new Date();
-    }, 500);
+          $.each(rep.data, function(index, element) {
+            $("#app1").append("<div style='font-size: 16px;'>"
+              + element.orderTime + "</br>" + element.investorID
+              + "placed an order!&nbsp;"
+              + "Price ¥" + formatCurrency(element.orderPrice) + "</div>");
+
+            begin = element.orderTime;
+          });
+
+          var div = document.getElementById('app1');
+          div.scrollTop = div.scrollHeight;
+        });
+    }, 2000);
   },
   updated: function() { },
   destroyed: function() { }

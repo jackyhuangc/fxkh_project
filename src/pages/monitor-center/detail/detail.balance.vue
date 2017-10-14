@@ -98,17 +98,32 @@ export default {
 	created: function() { },
 	mounted: function() {
 
-		var time = [];
-		var fee = [];
-		var deposit = [];
-		var withdraw = [];
+		var vm = this;
 
-		time = ['2017-10-09', '2017-10-10', '2017-10-11', '2017-10-12'];
-		fee = [100, 200, 300, 150];
-		deposit = [1000, 2000, 3000, 2000];
-		withdraw = [1000, 800, 1000, 3000];
+		// time = ['2017-10-09', '2017-10-10', '2017-10-11', '2017-10-12'];
+		// fee = [100, 200, 300, 150];
+		// deposit = [1000, 2000, 3000, 2000];
+		// withdraw = [1000, 800, 1000, 3000];
 
-		this.curve(time, fee, deposit, withdraw);
+		this.$http.get("http://localhost:8762/GetAccountSettle")
+			.then((rep) => {
+				//withdraw: 1212.32, settleDate: 1507046400000, recharge: 2121.32, fee: 123.32}
+				var time = [];
+				var fee = [];
+				var deposit = [];
+				var withdraw = [];
+
+				$.each(rep.data, function(index, element) {
+					time.push(element.settleDate);
+					fee.push(element.fee);
+					deposit.push(element.recharge);
+					withdraw.push(element.withdraw);
+				});
+
+				vm.curve(time, fee, deposit, withdraw);
+				// console.log(rep.bodyText);
+				// console.log(rep);
+			});
 	},
 	updated: function() { },
 	destroyed: function() { }
