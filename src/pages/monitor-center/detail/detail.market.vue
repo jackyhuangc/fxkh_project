@@ -48,7 +48,7 @@ export default {
         //color: ['red', 'green', 'yellow', 'blueviolet'],
         series: [
           {
-            name: '终端平台',
+            name: 'Terminal Platform',
             type: 'pie',
             radius: ['50%', '70%'],
             avoidLabelOverlap: false,

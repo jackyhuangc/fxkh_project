@@ -72,19 +72,19 @@ export default {
 				],
 				series: [
 					{
-						name: '手续费',
+						name: 'Fee',
 						type: 'line',
 						areaStyle: { normal: {} },
 						data: fee
 					},
 					{
-						name: '入金',
+						name: 'Recharge',
 						type: 'line',
 						areaStyle: { normal: {} },
 						data: deposit
 					},
 					{
-						name: '出金',
+						name: 'Withdraw',
 						type: 'line',
 						areaStyle: { normal: {} },
 						data: withdraw

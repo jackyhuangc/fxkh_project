@@ -88,7 +88,7 @@ export default {
     handleResize(event) {
       //this.screenWidth = document.documentElement.clientHeight;
       //$("#my_world_map").height(this.screenWidth);
-      console.log(this.screenHeight);
+      // console.log(this.screenHeight);
     },
     loadIpResources() {
 

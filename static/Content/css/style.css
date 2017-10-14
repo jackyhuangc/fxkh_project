@@ -242,7 +242,7 @@ h2 {
     height: 50px;
     background: url(../../../static/Content/images/topleft.jpg) no-repeat; /**/
     float: left;
-    width: 300px;
+    /* width: 300px; */
 }
 
     .topleft img {

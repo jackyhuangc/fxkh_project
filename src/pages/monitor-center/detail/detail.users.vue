@@ -73,7 +73,7 @@ export default {
         },
         series: [
           {
-            name: '用户总量',
+            name: 'Users',
             type: 'bar',
             data: datas,
 

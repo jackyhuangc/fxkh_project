@@ -2,7 +2,7 @@
   <div id="app">
     <div style="height:50px;">
       <div class="topleft">
-        <a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" height="50" width="50" title="系统首页" style="float: left;margin-top:0px;margin-left:0px;" />xxxxxxxxx</a>
+        <a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" height="50" width="50" title="系统首页" style="float: left;margin-top:0px;margin-left:0px;" />Futures Trading Montitoring Center</a>
       </div>
       <top v-bind:menus="menus" ref="top">
         <!--这是顶部菜单-->
@@ -82,13 +82,13 @@ export default {
   mounted() {
     console.log("mounted");
 
-    var token = localStorage.getItem('token');
-    this.$http.get("/api/UserCenter/GetUserInfoByToken"
-      + "?token=" + token)
-      .then((rep) => {
-        console.log(rep.data);
-        this.user = rep.data.data.userName;
-      });
+    // var token = localStorage.getItem('token');
+    // this.$http.get("/api/UserCenter/GetUserInfoByToken"
+    //   + "?token=" + token)
+    //   .then((rep) => {
+    //     console.log(rep.data);
+    //     this.user = rep.data.data.userName;
+    //   });
   },
   beforeUpdate() {
     console.log("beforeUpdate");

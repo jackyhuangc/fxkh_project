@@ -13,7 +13,7 @@
 			</div>
 			<div class="qrcode-download" style="text-align:center;">
 				<div class="btn green btn-block" style="font-weight:normal;text-align:center;line-height:35px;margin: 0px auto;">
-					<a href="http://118.89.35.114:6677/V1.0.52.apk">Android下载</a>
+					<a href="http://118.89.35.114:6677/V1.0.52.apk">Android Download</a>
 				</div>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 			</div>
 			<div class="qrcode-download" style="text-align:center;">
 				<div class="btn green btn-block" style="font-weight:normal;text-align:center;line-height:35px;margin: 0px auto;">
-					<a href="https://itunes.apple.com/us/app/%E9%91%AB%E7%AE%A1%E5%AE%B6/id1258478314?l=zh&ls=1&mt=8">IOS下载</a>
+					<a href="https://itunes.apple.com/us/app/%E9%91%AB%E7%AE%A1%E5%AE%B6/id1258478314?l=zh&ls=1&mt=8">IOS Download</a>
 				</div>
 			</div>
 		</div>

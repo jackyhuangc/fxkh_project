@@ -56,9 +56,9 @@
 }
 
 .login-center {
-	width: 500px;
+	width: 1024px;
 	height: 394px;
-	margin-left: -250px;
+	margin-left: -512px;
 	margin-top: -187px;
 }
 
@@ -95,7 +95,7 @@
 				<div class="row-fluid" style="text-align:center; ">
 
 					<div style="margin-bottom:50px;">
-						<a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" style="width:80px;" />xxxxxxxxxxxxxxxxxxxx</a>
+						<a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" style="width:80px;" />Futures Trading Monitoring Center</a>
 					</div>
 				</div>
 				<div class="row-fluid">
@@ -108,7 +108,7 @@
 											<span class="input-group-addon">
 												<span class="fa fa-user"></span>
 											</span>
-											<input autocomplete="off" type="text" class="form-control UserName" placeholder="请输入用户名|手机号" v-model="username" @keyup="enter_keyup($event)" />
+											<input autocomplete="off" type="text" class="form-control UserName" placeholder="username|telphone" v-model="username" @keyup="enter_keyup($event)" />
 										</div>
 									</div>
 								</div>
@@ -118,14 +118,14 @@
 											<span class="input-group-addon">
 												<span class="fa fa-lock"></span>
 											</span>
-											<input type="password" class="form-control Password" placeholder="请输入密码" v-model="password" @keyup="enter_keyup($event)" />
+											<input type="password" class="form-control Password" placeholder="password" v-model="password" @keyup="enter_keyup($event)" />
 										</div>
 									</div>
 								</div>
 								<div class="form-group form-actions">
 									<div class="col-md-12">
 										<p class="text-left remove-margin" style="display:block;height:23px; vertical-align:middle;font-size: 12px;color:#337ab7">
-											<label v-show="sRemember">自动登录</label>
+											<label v-show="sRemember">Auto Login</label>
 											<input type="checkbox" id="remember" name="remember" v-show="sRemember" v-model="remember" style="vertical-align:-3px;" />
 										</p>
 										<input type="button" id="login" @click="login()" class="btn btn-sm btn-info" v-model="bottonText" />
@@ -157,20 +157,20 @@ export default {
 			username: '',
 			password: '',
 			error: '',
-			bottonText: '登录'
+			bottonText: 'Login'
 		}
 	},
 	methods: {
 		login: function() {
 
 			if (this.username == '') {
-				this.error = "用户名不能为空！";
+				this.error = "userName is empty!";
 				$('.UserName').focus();
 				return;
 			}
 
 			if (this.password == '') {
-				this.error = "密码不能为空！";
+				this.error = "uassword is empty!";
 				$('.Password').focus();
 				return;
 			}
