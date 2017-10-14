@@ -1,6 +1,6 @@
 <template>
 	<div id="app" v-show="show">
-		<div id="main1" style="height:100%;width:100%;">xxxxxffffw</div>
+		<div id="main1" style="height:100%;width:100%;"></div>
 	</div>
 </template>
 
