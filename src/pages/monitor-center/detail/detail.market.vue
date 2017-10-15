@@ -81,7 +81,7 @@ export default {
   created: function() { },
   mounted: function() {
     var vm = this;
-    this.$http.get("http://localhost:8762/GetTerminalDistribution")
+    this.$http.get("http://118.89.35.114:8762/GetTerminalDistribution")
       .then((rep) => {
         var types = [];
         var datas = [];

@@ -113,7 +113,7 @@ export default {
   mounted: function() {
 
     var vm = this;
-    this.$http.get("http://localhost:8762/GetRegionDistribution")
+    this.$http.get("http://118.89.35.114:8762/GetRegionDistribution")
       .then((rep) => {
         var types = [];
         var datas = [];

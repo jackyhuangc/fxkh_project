@@ -51,11 +51,6 @@ export default {
 					y: 10,
 					y2: 20
 				},
-				toolbox: {
-					feature: {
-						saveAsImage: {}
-					}
-				},
 				xAxis: [
 					{
 						show: false,
@@ -105,7 +100,7 @@ export default {
 		// deposit = [1000, 2000, 3000, 2000];
 		// withdraw = [1000, 800, 1000, 3000];
 
-		this.$http.get("http://localhost:8762/GetAccountSettle")
+		this.$http.get("http://118.89.35.114:8762/GetAccountSettle")
 			.then((rep) => {
 				//withdraw: 1212.32, settleDate: 1507046400000, recharge: 2121.32, fee: 123.32}
 				var time = [];

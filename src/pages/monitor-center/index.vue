@@ -328,7 +328,7 @@ export default {
       var vm = this;
       setInterval(function() {
 
-        vm.$http.get("http://localhost:8762/GetRegionDistribution")
+        vm.$http.get("http://118.89.35.114:8762/GetRegionDistribution")
           .then((rep) => {
             var datas = [];
 

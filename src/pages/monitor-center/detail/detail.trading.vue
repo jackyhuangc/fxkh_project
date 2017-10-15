@@ -26,7 +26,7 @@ export default {
     var vm = this;
     setInterval(function() {
 
-      vm.$http.get("http://localhost:8762/GetOrderBillByTime?begin=" + begin + "&end=2099-12-31%2000:00:00")
+      vm.$http.get("http://118.89.35.114:8762/GetOrderBillByTime?begin=" + begin + "&end=2099-12-31%2000:00:00")
         .then((rep) => {
           var datas = [];
 

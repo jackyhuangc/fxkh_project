@@ -198,7 +198,7 @@ export default {
 			// 	});
 
 			// 模拟登录
-			window.location.href = window.location.origin + "/pages/main/index.html";
+			window.location.href = "/pages/main/index.html";
 			return;
 
 			this.error = "";
@@ -243,7 +243,7 @@ export default {
 		// this.password = "111111";
 		// this.login();
 		if (localStorage.getItem("remember")) {
-			window.location.href = window.location.origin + "/pages/main/index.html";
+			window.location.href = "/pages/main/index.html";
 		}
 	},
 	updated: function() {
