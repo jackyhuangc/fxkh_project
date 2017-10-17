@@ -36,7 +36,7 @@ export default {
               + element.investorID + "&nbsp;placed an order!&nbsp;"
               + "Price ¥" + formatCurrency(element.orderPrice) + "</div>");
 
-            begin = add_time(new Date(Date.parse(element.orderTime)), 1);
+            begin = add_seconds(new Date(Date.parse(element.orderTime)), 1);
           });
 
           var div = document.getElementById('app1');

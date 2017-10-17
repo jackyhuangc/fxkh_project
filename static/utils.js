@@ -104,11 +104,11 @@ var change_time = function (minutes) {
 };
 
 // 在指定时间基础上增加分钟数
-var add_time = function (now, minutes) {
+var add_seconds = function (now, seconds) {
 
 	// + 1 代表日期加，- 1代表日期减
 	//now.setDate((now.getDate()) + 1 * days);
-	now.setMinutes((now.getMinutes()) + 1 * minutes);
+	now.setSeconds((now.getSeconds()) + 1 * seconds);
 	var year = now.getFullYear();
 	var month = now.getMonth() + 1;
 	var day = now.getDate();
