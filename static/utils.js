@@ -103,6 +103,37 @@ var change_time = function (minutes) {
 	return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
 };
 
+// 在指定时间基础上增加分钟数
+var add_time = function (now, minutes) {
+
+	// + 1 代表日期加，- 1代表日期减
+	//now.setDate((now.getDate()) + 1 * days);
+	now.setMinutes((now.getMinutes()) + 1 * minutes);
+	var year = now.getFullYear();
+	var month = now.getMonth() + 1;
+	var day = now.getDate();
+	var hour = now.getHours();
+	var minute = now.getMinutes();
+	var second = now.getSeconds();
+	if (month < 10) {
+		month = '0' + month;
+	}
+	if (day < 10) {
+		day = '0' + day;
+	}
+	if (hour < 10) {
+		hour = '0' + hour;
+	}
+	if (minute < 10) {
+		minute = '0' + minute;
+	}
+	if (second < 10) {
+		second = '0' + second;
+	}
+
+	return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+};
+
 var formatCurrency = function (num) {
 	num = num.toString().replace(/\$|\,/g, '');
 	if (isNaN(num))
@@ -117,5 +148,5 @@ var formatCurrency = function (num) {
 		num = num.substring(0, num.length - (4 * i + 3)) + ',' +
 			num.substring(num.length - (4 * i + 3));
 
-	return (((sign) ? '' : '-') + num + '.' + cents);
+	return (((sign) ? '' : '-') + num);//+ '.' + cents);
 }    

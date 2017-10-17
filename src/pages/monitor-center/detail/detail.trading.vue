@@ -32,11 +32,11 @@ export default {
 
           $.each(rep.data, function(index, element) {
             $("#app1").append("<div style='font-size: 16px;'>"
-              + element.orderTime + "</br>" + element.investorID
-              + "placed an order!&nbsp;"
+              + element.orderTime + "</br>"
+              + element.investorID + "&nbsp;placed an order!&nbsp;"
               + "Price ¥" + formatCurrency(element.orderPrice) + "</div>");
 
-            begin = element.orderTime;
+            begin = add_time(new Date(Date.parse(element.orderTime)), 1);
           });
 
           var div = document.getElementById('app1');
