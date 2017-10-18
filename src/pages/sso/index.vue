@@ -242,7 +242,7 @@ export default {
 		// this.username = "admin";
 		// this.password = "111111";
 		// this.login();
-		if (localStorage.getItem("remember")) {
+		if (localStorage.getItem("remember") == "true") {
 			window.location.href = "/pages/main/index.html";
 		}
 	},
