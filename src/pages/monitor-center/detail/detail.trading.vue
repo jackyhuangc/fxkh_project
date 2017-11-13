@@ -6,55 +6,61 @@
 
 <script>
 export default {
-  name: 'app_1',
+  name: "app_1",
   data() {
     return {
       show: true,
-      title: '',
-      datasource: {
-      }
-    }
+      title: "",
+      datasource: {}
+    };
   },
-  methods: {
-  },
-  created: function() {
-  },
+  methods: {},
+  created: function() {},
   mounted: function() {
     var vm = this;
     var begin = change_time(-24 * 60);
     // 定期查询是否有变化
     var vm = this;
     setInterval(function() {
-
-      vm.$http.get("http://118.89.35.114:8762/GetOrderBillByTime?begin=" + begin + "&end=2099-12-31%2000:00:00")
-        .then((rep) => {
+      vm.$http
+        .get(
+          "http://115.28.129.46:8762/GetOrderBillByTime?begin=" +
+            begin +
+            "&end=2099-12-31%2000:00:00"
+        )
+        .then(rep => {
           var datas = [];
 
           $.each(rep.data, function(index, element) {
-            $("#app1").append("<div style='font-size: 16px;'>"
-              + element.orderTime + "</br>"
-              + element.investorID + "&nbsp;placed an order!&nbsp;"
-              + "Price ¥" + formatCurrency(element.orderPrice) + "</div>");
+            $("#app1").append(
+              "<div style='font-size: 16px;'>" +
+                element.orderTime +
+                "</br>" +
+                element.investorID +
+                "&nbsp;placed an order!&nbsp;" +
+                "Price ¥" +
+                formatCurrency(element.orderPrice) +
+                "</div>"
+            );
 
             begin = add_seconds(new Date(Date.parse(element.orderTime)), 1);
           });
 
-          var div = document.getElementById('app1');
+          var div = document.getElementById("app1");
           div.scrollTop = div.scrollHeight;
         });
     }, 2000);
   },
-  updated: function() { },
-  destroyed: function() { }
-}
-
+  updated: function() {},
+  destroyed: function() {}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #app {
   text-align: center;
-  font-family: '雅黑';
+  font-family: "雅黑";
   font-size: 26px;
 }
 </style>

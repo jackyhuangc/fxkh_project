@@ -6,21 +6,20 @@
 
 <script>
 export default {
-  name: 'app_1',
+  name: "app_1",
   data() {
     return {
       show: true,
-      title: '',
-      datasource: {
-      }
-    }
+      title: "",
+      datasource: {}
+    };
   },
   methods: {
     calculateMA(dayCount, data) {
       var result = [];
       for (var i = 0, len = data.length; i < len; i++) {
         if (i < dayCount) {
-          result.push('-');
+          result.push("-");
           continue;
         }
         var sum = 0;
@@ -33,13 +32,13 @@ export default {
     },
 
     curve(types, datas) {
-      var myChart = echarts.init(document.getElementById('main3'));
+      var myChart = echarts.init(document.getElementById("main3"));
 
       var option = {
         tooltip: {
-          trigger: 'axis',
+          trigger: "axis",
           axisPointer: {
-            type: 'shadow'
+            type: "shadow"
           }
         },
         // legend: {
@@ -53,28 +52,28 @@ export default {
         },
         xAxis: {
           show: false,
-          type: 'value',
+          type: "value",
           boundaryGap: [0, 1],
-          splitLine: { show: false }//去除网格线
+          splitLine: { show: false } //去除网格线
         },
         yAxis: {
           show: false,
-          type: 'category',
+          type: "category",
           data: types,
 
           axisLabel: {
             margin: -45,
             textStyle: {
-              color: 'red',
+              color: "red",
               fontSize: 14
             }
           },
-          splitLine: { show: false }//去除网格线
+          splitLine: { show: false } //去除网格线
         },
         series: [
           {
-            name: 'Users',
-            type: 'bar',
+            name: "Users",
+            type: "bar",
             data: datas,
 
             //配置样式
@@ -84,12 +83,36 @@ export default {
                 //每个柱子的颜色即为colorList数组里的每一项，如果柱子数目多于colorList的长度，则柱子颜色循环使用该数组
                 color: function(params) {
                   var colorList = [
-                    '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
-                    '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
-                    '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0',
-                    '#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
-                    '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
-                    '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                    "#C1232B",
+                    "#B5C334",
+                    "#FCCE10",
+                    "#E87C25",
+                    "#27727B",
+                    "#FE8463",
+                    "#9BCA63",
+                    "#FAD860",
+                    "#F3A43B",
+                    "#60C0DD",
+                    "#D7504B",
+                    "#C6E579",
+                    "#F4E001",
+                    "#F0805A",
+                    "#26C0C0",
+                    "#C1232B",
+                    "#B5C334",
+                    "#FCCE10",
+                    "#E87C25",
+                    "#27727B",
+                    "#FE8463",
+                    "#9BCA63",
+                    "#FAD860",
+                    "#F3A43B",
+                    "#60C0DD",
+                    "#D7504B",
+                    "#C6E579",
+                    "#F4E001",
+                    "#F0805A",
+                    "#26C0C0"
                   ];
                   return colorList[params.dataIndex];
                 }
@@ -98,23 +121,22 @@ export default {
               emphasis: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                shadowColor: "rgba(0, 0, 0, 0.5)"
               }
             }
           }
         ]
       };
 
-
       myChart.setOption(option);
     }
   },
-  created: function() { },
+  created: function() {},
   mounted: function() {
-
     var vm = this;
-    this.$http.get("http://118.89.35.114:8762/GetRegionDistribution")
-      .then((rep) => {
+    this.$http
+      .get("http://115.28.129.46:8762/GetRegionDistribution")
+      .then(rep => {
         var types = [];
         var datas = [];
 
@@ -127,10 +149,9 @@ export default {
         // console.log(rep);
       });
   },
-  updated: function() { },
-  destroyed: function() { }
-}
-
+  updated: function() {},
+  destroyed: function() {}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
