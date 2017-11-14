@@ -89,7 +89,7 @@
 }
 </style>
 <template>
-	<div id="app">
+ 	<div id="app">
 		<div class="login-parent">
 			<div class="container-fluid login-center">
 				<div class="row-fluid" style="text-align:center; ">
