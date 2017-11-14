@@ -42,7 +42,7 @@ export default {
 	name: 'panel_down',
 	data() {
 		return {
-			show: true,
+			show: false,
 			title: '',
 			datasource: {
 			}

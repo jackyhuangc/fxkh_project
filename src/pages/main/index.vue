@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div style="height:50px;">
+    <div>
       <div class="topleft">
         <a href="#" target="_parent" class="logo"><img src="../../../static/Content/images/logoV1.png" height="50" width="50" title="系统首页" style="float: left;margin-top:0px;margin-left:0px;" />Futures Trading Montitoring Center</a>
       </div>
