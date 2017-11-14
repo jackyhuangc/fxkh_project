@@ -9,7 +9,7 @@ export default {
   name: "app_1",
   data() {
     return {
-      show: false,
+      show: true,
       title: "",
       datasource: {}
     };
@@ -135,7 +135,7 @@ export default {
   mounted: function() {
     var vm = this;
     this.$http
-      .get("http://115.28.129.46:8762/GetRegionDistribution")
+      .get("http://118.89.35.114:8762/GetRegionDistribution")
       .then(rep => {
         var types = [];
         var datas = [];

@@ -9,7 +9,7 @@ export default {
   name: "app_1",
   data() {
     return {
-      show: false,
+      show: true,
       title: "",
       datasource: {}
     };

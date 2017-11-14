@@ -9,7 +9,7 @@ export default {
   name: 'app_1',
   data() {
     return {
-      show: false,
+      show: true,
       title: '',
       datasource: {
       }
@@ -81,7 +81,7 @@ export default {
   created: function() { },
   mounted: function() {
     var vm = this;
-    this.$http.get("http://115.28.129.46:8762/GetTerminalDistribution")
+    this.$http.get("http://118.89.35.114:8762/GetTerminalDistribution")
       .then((rep) => {
         var types = [];
         var datas = [];

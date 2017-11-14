@@ -9,7 +9,7 @@ export default {
   name: "app_1",
   data() {
     return {
-      show: false,
+      show: true,
       title: "",
       datasource: {}
     };
@@ -24,7 +24,7 @@ export default {
     setInterval(function() {
       vm.$http
         .get(
-          "http://115.28.129.46:8762/GetOrderBillByTime?begin=" +
+          "http://118.89.35.114:8762/GetOrderBillByTime?begin=" +
             begin +
             "&end=2099-12-31%2000:00:00"
         )
