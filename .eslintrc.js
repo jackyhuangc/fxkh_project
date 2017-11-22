@@ -23,10 +23,10 @@ module.exports = {
     'generator-star-spacing': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'space-before-function-paren': [0, 'always'],//函数定义时括号前面不要有空格
-    'semi': [2, 'always'],//语句强制分号结尾
-    //在JavaScript中有三种方式定义字符串，双引号、单引号、反义符（ECMAScript2015）。规定了字符串定义的方式
-    'quotes': [2, 'double'],
-    "no-undef": 0,//不能有未定义的变量
+    'space-before-function-paren': [0, 'always'],// 函数定义时括号前面不要有空格
+    'semi': [2, 'always'],// 语句强制分号结尾
+    // 在JavaScript中有三种方式定义字符串，双引号、单引号、反义符（ECMAScript2015）。规定了字符串定义的方式
+    'quotes': [2, 'double'],// 支持双引号
+    "no-undef": 0,//关掉不能有未定义的变量
   }
 }
