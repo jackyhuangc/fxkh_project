@@ -39,50 +39,43 @@
 
 <script>
 export default {
-	name: 'panel_down',
-	data() {
-		return {
-			show: false,
-			title: '',
-			datasource: {
-			}
-		}
-	},
-	methods: {
-		android() {
-
-		},
-		ios() {
-
-		}
-	},
-	created: function() { },
-	mounted: function() {
-	},
-	updated: function() { },
-	destroyed: function() { }
-}
-
+  name: "panel_down",
+  data() {
+    return {
+      show: false,
+      title: "",
+      datasource: {}
+    };
+  },
+  methods: {
+    android() {},
+    ios() {}
+  },
+  created: function() {},
+  mounted: function() {},
+  updated: function() {},
+  destroyed: function() {}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 a {
-	font-size: 14px;
+  font-size: 14px;
 }
 
 body {
-	margin: 0px;
+  margin: 0px;
 }
 
 input {
-	border: none;
-	width: 100%;
-	background-color: #000;
-	color: #fff;
-	padding: 0px;
-	font-size: 18px;
-	height: 34px;
-	line-height: 34px;
+  border: none;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 0px;
+  font-size: 18px;
+  height: 34px;
+  line-height: 34px;
 }
 </style>

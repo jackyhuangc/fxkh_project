@@ -13,4 +13,4 @@ new Vue({
   el: '#app',
   template: '<Login/>',
   components: { Login }
-})
+});

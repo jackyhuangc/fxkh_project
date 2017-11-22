@@ -11,7 +11,8 @@ Date.prototype.format = function (format) {
 		"q+": Math.floor((this.getMonth() + 3) / 3), // quarter
 		"S": this.getMilliseconds()
 		// millisecond
-	}
+	};
+
 	if (/(y+)/.test(format)) {
 		format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
 	}
@@ -21,7 +22,7 @@ Date.prototype.format = function (format) {
 		}
 	}
 	return format;
-}
+};
 
 var rounddec = function (price) {
 	var round = 0;
@@ -43,16 +44,17 @@ var rounddec = function (price) {
 	}
 
 	return round;
-}
+};
 
 var formatPrice = function (price) {
 	if (price == undefined || price > 99999999)
 		return "-";
 	return parseFloat(price).toFixed(rounddec(price));
-}
+};
+
 var formatTime = function (strTime) {
 	return strTime.replace('T', ' ').substr(11, 5);
-}
+};
 
 var change_date = function (days) {
 	// 参数表示在当前日期下要增加的天数
@@ -115,6 +117,7 @@ var add_seconds = function (now, seconds) {
 	var hour = now.getHours();
 	var minute = now.getMinutes();
 	var second = now.getSeconds();
+
 	if (month < 10) {
 		month = '0' + month;
 	}
@@ -149,4 +152,4 @@ var formatCurrency = function (num) {
 			num.substring(num.length - (4 * i + 3));
 
 	return (((sign) ? '' : '-') + num);//+ '.' + cents);
-}    
+};    

@@ -26,7 +26,6 @@
 </template>
 
 <script>
-//import klineinfo from './detail/detail.kline.vue'
 import marketinfo from "./detail/detail.market.vue";
 import users from "./detail/detail.users.vue";
 import balanceinfo from "./detail/detail.balance.vue";
@@ -62,7 +61,7 @@ export default {
       this.$http
         .get("/api/PlatResource/QueryDistrictByStateCode?code=" + val)
         .then(response => {
-          if ((response.data.code = "000")) {
+          if (response.data.code === "000") {
             var array = [];
             console.log(response.data.data.length);
 
@@ -86,8 +85,8 @@ export default {
   },
   methods: {
     handleResize(event) {
-      //this.screenWidth = document.documentElement.clientHeight;
-      //$("#my_world_map").height(this.screenWidth);
+      // this.screenWidth = document.documentElement.clientHeight;
+      // $("#my_world_map").height(this.screenWidth);
       // console.log(this.screenHeight);
     },
     loadIpResources(data) {
@@ -532,7 +531,7 @@ export default {
             var op = myChart.getOption();
 
             // 修改具体的指标
-            //obj.value[2]=Math.random()*100;
+            // obj.value[2]=Math.random()*100;
             op.series[0].data = vm.loadIpResources(datas);
 
             // 更新具体的指标

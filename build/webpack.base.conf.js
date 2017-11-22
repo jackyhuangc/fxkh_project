@@ -11,14 +11,14 @@ module.exports = {
   entry: {
     'main': './src/main.js',
     'pages/main/index': './src/pages/main/index.js',
-    'pages/usercenter/index': './src/pages/usercenter/index.js',
-    'pages/rsproject/index': './src/pages/rsproject/index.js',
-    'pages/emergency/index': './src/pages/emergency/index.js',
-    'pages/boys/index': './src/pages/boys/index.js',
-    'pages/goods/index': './src/pages/goods/index.js',
-    'pages/index/index': './src/pages/index/index.js',
+    // 'pages/usercenter/index': './src/pages/usercenter/index.js',
+    // 'pages/rsproject/index': './src/pages/rsproject/index.js',
+    // 'pages/emergency/index': './src/pages/emergency/index.js',
+    // 'pages/boys/index': './src/pages/boys/index.js',
+    // 'pages/goods/index': './src/pages/goods/index.js',
+    // 'pages/index/index': './src/pages/index/index.js',
     'pages/monitor-center/index': './src/pages/monitor-center/index.js',
-    'pages/social-economy/index': './src/pages/social-economy/index.js',
+    // 'pages/social-economy/index': './src/pages/social-economy/index.js',
   },
   output: {
     path: config.build.assetsRoot,
@@ -36,6 +36,15 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(vue)$/,///\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src'), resolve('test')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

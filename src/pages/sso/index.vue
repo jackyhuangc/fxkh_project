@@ -1,91 +1,91 @@
 <style scoped>
 .form {
-	width: 100%;
-	max-width: 400px;
-	margin: 0px auto 0px auto;
+  width: 100%;
+  max-width: 400px;
+  margin: 0px auto 0px auto;
 }
 
 .login-content {
-	width: 100%;
-	max-width: 400px;
-	background-color: white;
-	float: left;
-	text-align: center;
-	padding-top: 50px;
-	border-radius: 4px;
-	height: 300px;
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  float: left;
+  text-align: center;
+  padding-top: 50px;
+  border-radius: 4px;
+  height: 300px;
 }
 
 .input-group {
-	margin: 0px 0px 30px 0px !important;
+  margin: 0px 0px 30px 0px !important;
 }
 
 .form-control,
 .input-group {
-	height: 40px;
+  height: 40px;
 }
 
 .form-group {
-	margin-bottom: 0px !important;
+  margin-bottom: 0px !important;
 }
 
 .link p {
-	line-height: 20px;
-	margin-top: 30px;
+  line-height: 20px;
+  margin-top: 30px;
 }
 
 .btn-sm {
-	width: 100%;
-	font-size: 16px !important;
+  width: 100%;
+  font-size: 16px !important;
 }
 
 #userError {
-	text-align: left;
-	color: red;
-	margin-top: 10px;
+  text-align: left;
+  color: red;
+  margin-top: 10px;
 }
 
 .login-parent {
-	width: 0;
-	height: 0;
-	position: fixed;
-	left: 50%;
-	right: 50%;
-	top: 50%;
-	bottom: 50%;
+  width: 0;
+  height: 0;
+  position: fixed;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
 }
 
 .login-center {
-	width: 1024px;
-	height: 394px;
-	margin-left: -512px;
-	margin-top: -187px;
+  width: 1024px;
+  height: 394px;
+  margin-left: -512px;
+  margin-top: -187px;
 }
 
 .remember-text {
-	vertical-align: middle;
-	font-size: 12px;
-	font-family: Tahoma;
-	color: #337ab7;
+  vertical-align: middle;
+  font-size: 12px;
+  font-family: Tahoma;
+  color: #337ab7;
 }
 
 #remember {
-	vertical-align: middle;
+  vertical-align: middle;
 }
 
 .logo,
 .logo:visited,
 .logo:focus,
 .logo:hover {
-	color: #326BD1;
-	text-decoration: none;
+  color: #326bd1;
+  text-decoration: none;
 }
 
 .logo {
-	font-size: 34px;
-	font-family: 'Microsoft YaHei';
-	font-weight: bold;
-	color: #326BD1;
+  font-size: 34px;
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  color: #326bd1;
 }
 </style>
 <template>
@@ -147,108 +147,115 @@
 
 <script>
 export default {
-	name: 'app1',
-	components: {
-	},
-	data() {
-		return {
-			sRemember: true,
-			remember: false,
-			username: '',
-			password: '',
-			error: '',
-			bottonText: 'Login'
-		}
-	},
-	methods: {
-		login: function() {
+  name: "app1",
+  components: {},
+  data() {
+    return {
+      sRemember: true,
+      remember: false,
+      username: "",
+      password: "",
+      error: "",
+      bottonText: "Login"
+    };
+  },
+  methods: {
+    login: function() {
+      if (this.username === "") {
+        this.error = "userName is empty!";
+        $(".UserName").focus();
+        return;
+      }
 
-			if (this.username == '') {
-				this.error = "userName is empty!";
-				$('.UserName').focus();
-				return;
-			}
+      if (this.password === "") {
+        this.error = "uassword is empty!";
+        $(".Password").focus();
+        return;
+      }
 
-			if (this.password == '') {
-				this.error = "uassword is empty!";
-				$('.Password').focus();
-				return;
-			}
+      if (this.username !== "admin" || this.password !== "admin123") {
+        this.error = "invalid username or password";
+        $(".UserName").focus();
+        return;
+      }
 
-			if (this.username != "admin" || this.password != "admin123") {
-				this.error = "invalid username or password";
-				$('.UserName').focus();
-				return;
-			}
+      localStorage.setItem("remember", this.remember);
+      localStorage.setItem("token", "admin|xlkjfdkjaklfjdsflxfdslaf");
+      // // 该接口为8763的本地接口
+      // this.$http.get("http://localhost:8763/rest/template/xx")
+      // .then((rep) => {
+      // console.log(rep.bodyText);
+      // console.log(rep);
+      // });
 
-			localStorage.setItem('remember', this.remember);
-			localStorage.setItem('token', "admin|xlkjfdkjaklfjdsflxfdslaf");
-			// // 该接口为8763的本地接口
-			// this.$http.get("http://localhost:8763/rest/template/xx")
-			// 	.then((rep) => {
-			// 		console.log(rep.bodyText);
-			// 		console.log(rep);
-			// 	});
+      // // 该接口为8763作为zuul带来的路由接口
+      // this.$http.get("http://localhost:8763/test1?accessToken=xx")
+      // .then((rep) => {
+      // console.log(rep.bodyText);
+      // console.log(rep);
+      // });
 
-			// // 该接口为8763作为zuul带来的路由接口
-			// this.$http.get("http://localhost:8763/test1?accessToken=xx")
-			// 	.then((rep) => {
-			// 		console.log(rep.bodyText);
-			// 		console.log(rep);
-			// 	});
+      // 模拟登录
+      window.location.href = "/pages/main/index.html";
+      // return;
 
-			// 模拟登录
-			window.location.href = "/pages/main/index.html";
-			return;
+      // this.error = "";
+      // this.$http
+      //   .get(
+      //     "/api/UserCenter/CheckLogin" +
+      //       "?userName=" +
+      //       this.username +
+      //       "&password=" +
+      //       this.password +
+      //       "&returnUrl=" +
+      //       returnUrl +
+      //       "&remember=" +
+      //       this.remember
+      //   )
+      //   .then(rep => {
+      //     console.log(rep.data);
+      //     if (rep.data.code == "000") {
+      //       localStorage.setItem("remember", this.remember);
+      //       localStorage.setItem("token", rep.data.data.token);
 
-			this.error = "";
-			this.$http.get("/api/UserCenter/CheckLogin"
-				+ "?userName=" + this.username
-				+ "&password=" + this.password
-				+ "&returnUrl=" + returnUrl
-				+ "&remember=" + this.remember)
-				.then((rep) => {
-					console.log(rep.data);
-					if (rep.data.code == '000') {
-						localStorage.setItem('remember', this.remember);
-						localStorage.setItem('token', rep.data.data.token);
+      //       if (!window.location.origin) {
+      //         console.log(window.location.protocol);
+      //         window.location.origin =
+      //           window.location.protocol +
+      //           "//" +
+      //           window.location.hostname +
+      //           (window.location.port ? ":" + window.location.port : "");
+      //       }
 
-						if (!window.location.origin) {
-							console.log(window.location.protocol);
-							window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-						}
-
-						console.log(window.location.origin);
-						console.log(window.location.href);
-						window.location.href = window.location.origin + "/pages/main/index.html";
-					}
-					else {
-						this.error = rep.data.error;
-					}
-				});
-		},
-		enter_keyup: function(ev) {
-
-			if (ev.keyCode == 13) {
-				this.login();
-			}
-		},
-	},
-	created: function() {
-		console.log("created");
-	},
-	mounted: function() {
-		console.log("mounted");
-		// this.username = "admin";
-		// this.password = "111111";
-		// this.login();
-		if (localStorage.getItem("remember") == "true") {
-			window.location.href = "/pages/main/index.html";
-		}
-	},
-	updated: function() {
-		console.log("updated");
-	}
-}
-
+      //       console.log(window.location.origin);
+      //       console.log(window.location.href);
+      //       window.location.href =
+      //         window.location.origin + "/pages/main/index.html";
+      //     } else {
+      //       this.error = rep.data.error;
+      //     }
+      //   });
+    },
+    enter_keyup: function(ev) {
+      if (ev.keyCode === 13) {
+        this.login();
+      }
+    }
+  },
+  created: function() {
+    console.log("created");
+  },
+  mounted: function() {
+    console.log("mounted");
+    // this.username = "admin";
+    // this.password = "111111";
+    // this.login();
+    if (localStorage.getItem("remember") === "true") {
+      window.location.href = "/pages/main/index.html";
+    }
+  },
+  updated: function() {
+    console.log("updated");
+  }
+};
 </script>

@@ -99,7 +99,6 @@ export default {
     // withdraw = [1000, 800, 1000, 3000];
 
     this.$http.get("http://118.89.35.114:8762/GetAccountSettle").then(rep => {
-      //withdraw: 1212.32, settleDate: 1507046400000, recharge: 2121.32, fee: 123.32}
       var time = [];
       var fee = [];
       var deposit = [];

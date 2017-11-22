@@ -19,18 +19,14 @@
 
 <script>
 export default {
-  name: 'left',
-  props: ['menus'],// 可用于值传递
-  components: {
-  },
+  name: "left",
+  props: ["menus"],
+  components: {},
   methods: {
-
-    exit: function () {
-    }
+    exit: function() {}
   },
-  created: function () {
+  created: function() {
     console.log("created");
-    //初始化操作，如菜单
   },
   mounted() {
     console.log("mounted");
@@ -38,13 +34,13 @@ export default {
   beforeUpdate() {
     console.log("beforeUpdate");
   },
-  updated: function () {
+  updated: function() {
     console.log("updated");
   },
-  destroyed: function () {
+  destroyed: function() {
     console.log("destroyed");
   }
-}
+};
 </script>
 
 <style scoped>

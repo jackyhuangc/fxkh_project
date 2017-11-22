@@ -18,9 +18,9 @@ export default {
   created: function() {},
   mounted: function() {
     var vm = this;
+
     var begin = change_time(-24 * 60);
-    // 定期查询是否有变化
-    var vm = this;
+
     setInterval(function() {
       vm.$http
         .get(
@@ -29,8 +29,6 @@ export default {
             "&end=2099-12-31%2000:00:00"
         )
         .then(rep => {
-          var datas = [];
-
           $.each(rep.data, function(index, element) {
             $("#app1").append(
               "<div style='font-size: 16px;'>" +

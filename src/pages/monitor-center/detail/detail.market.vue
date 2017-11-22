@@ -6,21 +6,20 @@
 
 <script>
 export default {
-  name: 'app_1',
+  name: "app_1",
   data() {
     return {
       show: true,
-      title: '',
-      datasource: {
-      }
-    }
+      title: "",
+      datasource: {}
+    };
   },
   methods: {
     calculateMA(dayCount, data) {
       var result = [];
       for (var i = 0, len = data.length; i < len; i++) {
         if (i < dayCount) {
-          result.push('-');
+          result.push("-");
           continue;
         }
         var sum = 0;
@@ -33,35 +32,29 @@ export default {
     },
 
     curve(types, datas) {
-      var myChart = echarts.init(document.getElementById('main2'));
+      var myChart = echarts.init(document.getElementById("main2"));
 
       var option = {
         tooltip: {
-          trigger: 'item',
+          trigger: "item",
           formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
-        // legend: {
-        //   orient: 'vertical',
-        //   x: 'left',
-        //   data: types
-        // },
-        //color: ['red', 'green', 'yellow', 'blueviolet'],
         series: [
           {
-            name: 'Terminal Platform',
-            type: 'pie',
-            radius: ['50%', '70%'],
+            name: "Terminal Platform",
+            type: "pie",
+            radius: ["50%", "70%"],
             avoidLabelOverlap: false,
             label: {
               normal: {
                 show: false,
-                position: 'center'
+                position: "center"
               },
               emphasis: {
                 show: false,
                 textStyle: {
-                  fontSize: '30',
-                  fontWeight: 'bold'
+                  fontSize: "30",
+                  fontWeight: "bold"
                 }
               }
             },
@@ -78,11 +71,12 @@ export default {
       myChart.setOption(option);
     }
   },
-  created: function() { },
+  created: function() {},
   mounted: function() {
     var vm = this;
-    this.$http.get("http://118.89.35.114:8762/GetTerminalDistribution")
-      .then((rep) => {
+    this.$http
+      .get("http://118.89.35.114:8762/GetTerminalDistribution")
+      .then(rep => {
         var types = [];
         var datas = [];
 
@@ -95,9 +89,9 @@ export default {
         // console.log(rep);
       });
   },
-  updated: function() { },
-  destroyed: function() { }
-}
+  updated: function() {},
+  destroyed: function() {}
+};
 
 // layui.use(['element', 'layer', 'form', 'layedit', 'laydate'], function() {
 //   var element = layui.element()
@@ -107,7 +101,6 @@ export default {
 //     , laydate = layui.laydate;
 
 // });
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
